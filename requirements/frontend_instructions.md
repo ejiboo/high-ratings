@@ -68,3 +68,5 @@ high-ratings-com
 ## Rules
 - all new components should go into /components and be named like example-component.tsx unless otherwise specified
 - all new pages go in /app  
+
+## testing git commit
