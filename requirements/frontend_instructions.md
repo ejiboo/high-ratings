@@ -31,7 +31,7 @@ Build a website/web app that provides leaderboards for the top 10/25/50/100 movi
 - Last.fm API key: 083b539f16a2bc79bf5ed286cafdd36a
 
 ## Current File Structure
-high-ratings-com
+high-ratings-com-20240924-1456
 ├── .next
 ├── app
 │   ├── fonts
@@ -41,16 +41,16 @@ high-ratings-com
 │   ├── page.tsx
 │   ├── components
 │   ├── hooks
-│   ├── lib
-│   └── requirements
-│       ├── backend_instructions.md
-│       ├── frontend_instructions.md
-│       ├── mockup-main.png
-│       ├── mockup-user-dashboard-book...
-│       ├── mockup-user-dashboard-likes...
-│       ├── mockup-user-dashboard-lists...
-│       └── mockup-user-dashboard-rating...
+│   └── lib
 ├── node_modules
+├── requirements
+│   ├── backend_instructions.md
+│   ├── frontend_instructions.md
+│   ├── mockup-main.png
+│   ├── mockup-user-dashboard-bookmarks.png
+│   ├── mockup-user-dashboard-likes.png
+│   ├── mockup-user-dashboard-lists.png
+│   └── mockup-user-dashboard-ratings.png
 ├── .env.local
 ├── .eslintrc.json
 ├── .gitignore
