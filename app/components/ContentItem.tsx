@@ -3,9 +3,10 @@ import { Subject } from '../dummyData'
 
 interface ContentItemProps {
   item: Subject;
+  activeCategory: string;
 }
 
-const ContentItem: React.FC<ContentItemProps> = ({ item }) => {
+const ContentItem: React.FC<ContentItemProps> = ({ item, activeCategory }) => {
   const [isBookmarked, setIsBookmarked] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
   const [userRating, setUserRating] = useState(0)
@@ -25,6 +26,23 @@ const ContentItem: React.FC<ContentItemProps> = ({ item }) => {
     setHoverRating(0)
   }
 
+  const getActionIcon = (action: string) => {
+    if (action === 'eye') {
+      switch (activeCategory) {
+        case 'Movies':
+        case 'TV Shows':
+          return 'fa-eye';
+        case 'Music':
+          return 'fa-headphones';
+        case 'Books':
+          return 'fa-book-open';
+        default:
+          return 'fa-eye';
+      }
+    }
+    return `fa-${action}`;
+  }
+
   return (
     <div className="flex mb-4">
       <div className="w-[100px] h-[150px] bg-gray-300 rounded-lg mr-6 flex items-center justify-center text-gray-500">
@@ -37,6 +55,9 @@ const ContentItem: React.FC<ContentItemProps> = ({ item }) => {
           <span><i className="far fa-calendar mr-1"></i> {item.releaseDate}</span>
           {item.runtime && <span><i className="far fa-clock mr-1"></i> {item.runtime}</span>}
           {item.mpaaRating && <span><i className="fas fa-film mr-1"></i> {item.mpaaRating}</span>}
+          {item.duration && <span><i className="fas fa-music mr-1"></i> {item.duration}</span>}
+          {item.pageCount && <span><i className="fas fa-file-alt mr-1"></i> {item.pageCount} pages</span>}
+          {item.explicitRating && <span><i className="fas fa-exclamation-circle mr-1"></i> {item.explicitRating}</span>}
         </div>
         <div className="flex flex-wrap gap-1.5 mb-3">
           {item.genres.map((genre, index) => (
@@ -57,7 +78,7 @@ const ContentItem: React.FC<ContentItemProps> = ({ item }) => {
                   if (icon === 'heart') setIsLiked(!isLiked);
                 }}
               >
-                <i className={`${icon === 'bookmark' || icon === 'heart' ? (icon === 'bookmark' && isBookmarked) || (icon === 'heart' && isLiked) ? 'fas' : 'far' : 'fas'} fa-${icon}`}></i>
+                <i className={`${icon === 'bookmark' || icon === 'heart' ? (icon === 'bookmark' && isBookmarked) || (icon === 'heart' && isLiked) ? 'fas' : 'far' : 'fas'} ${getActionIcon(icon)}`}></i>
               </button>
             ))}
           </div>

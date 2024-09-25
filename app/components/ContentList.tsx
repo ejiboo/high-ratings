@@ -33,9 +33,25 @@ const ContentList: React.FC = () => {
         return categoryMatch;
       })
       .filter(item => {
-        const titleMatch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
-        console.log(`Title match for ${item.title}:`, titleMatch);
-        return titleMatch;
+        const searchLower = searchQuery.toLowerCase();
+        const matchFields = [
+          item.title,
+          item.description,
+          item.releaseDate,
+          item.runtime,
+          item.mpaaRating,
+          item.artist,
+          item.author,
+          ...item.genres,
+          item.avgRating.toString(),
+          item.duration,
+          item.pageCount?.toString(),
+          item.explicitRating
+        ].map(field => field?.toLowerCase() || '');
+
+        const searchMatch = matchFields.some(field => field.includes(searchLower));
+        console.log(`Search match for ${item.title}:`, searchMatch);
+        return searchMatch;
       })
       .filter(item => {
         const releaseDate = new Date(item.releaseDate)
@@ -122,7 +138,7 @@ const ContentList: React.FC = () => {
       />
       {filteredData.length > 0 ? (
         filteredData.map((item: Subject) => (
-          <ContentItem key={item.id} item={item} />
+          <ContentItem key={item.id} item={item} activeCategory={activeCategory} />
         ))
       ) : (
         <p>No items found</p>

@@ -11,6 +11,9 @@ export interface Subject {
   genres: string[];
   description: string;
   imageUrl?: string;
+  duration?: string; // for music
+  pageCount?: number; // for books
+  explicitRating?: 'Explicit' | 'Clean'; // for music
 }
 
 function generateDummyData(category: Subject['category'], count: number): Subject[] {
@@ -27,6 +30,9 @@ function generateDummyData(category: Subject['category'], count: number): Subjec
     genres: ['Action', 'Drama', 'Comedy', 'Sci-Fi', 'Romance'].sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * 3) + 1),
     description: `This is a sample description for ${category} item ${i + 1}.`,
     imageUrl: Math.random() > 0.2 ? `/images/${category.toLowerCase().replace(' ', '-')}/${i + 1}.jpg` : undefined,
+    duration: category === 'Music' ? `${Math.floor(Math.random() * 5 + 2)}:${Math.floor(Math.random() * 59).toString().padStart(2, '0')}` : undefined,
+    pageCount: category === 'Books' ? Math.floor(Math.random() * 500 + 100) : undefined,
+    explicitRating: category === 'Music' ? (Math.random() > 0.7 ? 'Explicit' : 'Clean') : undefined,
   }));
 }
 
@@ -35,7 +41,7 @@ const dummyData: Subject[] = [
   ...generateDummyData('TV Shows', 100),
   ...generateDummyData('Music', 100),
   ...generateDummyData('Books', 100),
-].sort((a, b) => b.avgRating - a.avgRating);
+].sort((a, b) => b.avgRating - a.avgRating || a.id - b.id);
 
 console.log('Total dummy data items:', dummyData.length);
 
