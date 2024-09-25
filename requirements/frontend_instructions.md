@@ -2,7 +2,7 @@
 Build a website/web app that can be easily converted into a pwa that provides leaderboards for the top 10/25/50/100 movies, tv shows, music, and books in the past 1week/1month/1year/all time.
 
 ## Feature Requirements
-- we will use next.js, shadcn, lucid, supabase (for database and storage), clerk (for login)
+- we will use next.js, shadcn, font awesome (for free icons and emojis), supabase (for database and storage), clerk (for login)
 - Leaderboards for the top 10/25/50/100 movies, tv shows, music, and books in the past 1week/1month/1year/all time.
 - Allows users to sign up for their own highratings.com account where they can leave scores from 0-10 stars. Each user has their own dashboard with content their likes, bookmarks, ratings, and lists.
 - We need to find a way to get the top 100 subjects for each category automatically, via api or through scraping if it’s legal on said site/platform. We want to integrate a way for these metrics to automatically update every 7 days. this can be done by a cron job on the server. this can also be done at a later date in order to reduce current complexity.
