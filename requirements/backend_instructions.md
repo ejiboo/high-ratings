@@ -3,6 +3,7 @@ use this guide to build the backend for high-ratings.com
 
 ## Tech Stack
 - Next.js
+- Shadcn
 - Supabase (for database and storage)
 - Clerk (for login)
 

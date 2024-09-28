@@ -146,5 +146,4 @@ const ContentList: React.FC = () => {
     </div>
   )
 }
-
 export default ContentList
